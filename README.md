@@ -23,7 +23,7 @@ and create an animation that creates the convolution graph in real time, similar
 
 ## Resources
 
-[Algebrite](http://algebrite.org/)
-[Nerdamer](http://nerdamer.com/)
-[D3](https://d3js.org/)
-[Function Plot](https://mauriciopoppe.github.io/function-plot/)
+*[Algebrite](http://algebrite.org/)
+*[Nerdamer](http://nerdamer.com/)
+*[D3](https://d3js.org/)
+*[Function Plot](https://mauriciopoppe.github.io/function-plot/)
