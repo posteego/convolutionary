@@ -2,6 +2,8 @@
 
 Convolutionary is a website that helps people visualize convolution.
 
+## Inspiration
+
 I was inspired to work on this project when thinking about my engineering courses in the past,
 and remembering that many of my peers had a difficult time visualizing the "flip and shift" method and the resulting graph after a convolution.
 
