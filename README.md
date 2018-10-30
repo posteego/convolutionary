@@ -20,3 +20,10 @@ and create an animation that creates the convolution graph in real time, similar
 ![Convoltion of box and exponent function](https://upload.wikimedia.org/wikipedia/commons/b/b9/Convolution_of_spiky_function_with_box2.gif)
 
 > [source code](https://en.wikipedia.org/wiki/File:Convolution_of_spiky_function_with_box2.gif)
+
+## Resources
+
+[Algebrite](http://algebrite.org/)
+[Nerdamer](http://nerdamer.com/)
+[D3](https://d3js.org/)
+[Function Plot](https://mauriciopoppe.github.io/function-plot/)
