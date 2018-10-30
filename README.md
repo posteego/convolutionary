@@ -13,7 +13,7 @@ and create an animation that creates the convolution graph in real time, similar
 *Animations created using Matlab*
 
 ![Convolution of box with itself](https://upload.wikimedia.org/wikipedia/commons/6/6a/Convolution_of_box_signal_with_itself2.gif)
- [source code](https://en.wikipedia.org/wiki/File:Convolution_of_box_signal_with_itself2.gif)
+> [source code](https://en.wikipedia.org/wiki/File:Convolution_of_box_signal_with_itself2.gif)
 
 ![Convoltion of box and exponent function](https://upload.wikimedia.org/wikipedia/commons/b/b9/Convolution_of_spiky_function_with_box2.gif)
- [source code](https://en.wikipedia.org/wiki/File:Convolution_of_spiky_function_with_box2.gif)
+> [source code](https://en.wikipedia.org/wiki/File:Convolution_of_spiky_function_with_box2.gif)
