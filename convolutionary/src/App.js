@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
-import { Footer } from './components/layout';
 import Main from './components/Main';
 
 const theme = createMuiTheme({
@@ -10,21 +9,28 @@ const theme = createMuiTheme({
       main: '#0d47a1'
     },
     secondary: {
-      main: '#f4ff81'
+      main: '#00bcd4'
     }
   },
   typography: {
     useNextVariants: true,
+    fontFamily: [
+      "Poppins",
+      "Roboto",
+    ].join(','),
   },
 });
 
-const App = () => (
-  <MuiThemeProvider theme={theme}>
-    <React.Fragment>
-      <Main />
-      <Footer />
-    </React.Fragment>
-  </MuiThemeProvider>
-);
+class App extends Component {
+  render() {
+    return (
+      <MuiThemeProvider theme={theme}>
+        <React.Fragment>
+          <Main/>
+        </React.Fragment>
+      </MuiThemeProvider>
+    );
+  }
+}
 
-export default App;
+export default (App);

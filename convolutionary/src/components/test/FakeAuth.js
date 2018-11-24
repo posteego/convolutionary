@@ -1,5 +1,5 @@
 const FakeAuth = {
-  isLoggedIn: true,
+  isLoggedIn: false,
   login(cb) {
     this.isLoggedIn = true
     setTimeout(cb, 100) // fake async
