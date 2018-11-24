@@ -13,18 +13,21 @@ function Splash(props) {
       {/* Hero unit */}
       <div>
         <Typography variant="h2" color="inherit" gutterBottom>
-          ANIMATION EXAMPLE
+          (animation example)
         </Typography>
       </div>
       <div className={classes.hero}>
-        <Typography color="secondary" className={classes.title}>
-          Convolutionary
+        <Typography color="inherit" variant="headline" align="center" gutterBottom className={classes.slogan}>
+          a dictionary of convolutions
           </Typography>
-        <Typography variant="h5" align="center" gutterBottom component="p" className={classes.description}>
+        <Typography color="primary" className={classes.title}>
+          Convolution • ary
+          </Typography>
+        <Typography color="inherit" variant="h5" align="center" gutterBottom component="p" className={classes.description}>
           Visualize the mathematical convolution of two given functions.
           </Typography>
-        <Link to="/start" className={classes.start}>
-          <Button variant="outlined" size="large" color="secondary">
+        <Link to="/start" className={classes.startLink}>
+          <Button variant="outlined" size="large" color="primary" className={classes.startBtn}>
             Get Started
           </Button>
         </Link>
@@ -51,12 +54,20 @@ const styles = {
     marginBottom: 25,
     fontSize: '10vmin',
   },
-  description: {
-    marginBottom: 35,
+  slogan: {
+    marginBottom: -15,
+    fontFamily: "Comfortaa",
   },
-  start: {
+  description: {
+    marginBottom: 30,
+    fontFamily: "Questrial",
+  },
+  startLink: {
     textDecoration: 'none',
   },
+  startBtn: {
+    fontSize: 15,
+  }
 }
 
 export default withStyles(styles)(Splash);

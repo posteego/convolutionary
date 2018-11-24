@@ -22,7 +22,7 @@ class LoginForm extends Component {
     return (
       <div className={classes.container}>
         {this.props.redirect && <p>You must log in to view your dashboard!</p>}
-        <Typography variant="h1" color="secondary" className={classes.title}>
+        <Typography variant="display3" color="secondary" className={classes.title}>
           Login
         </Typography>
         <form className={classes.formContainer} noValidate autoComplete="off">

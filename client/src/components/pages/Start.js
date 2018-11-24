@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { Typography } from '@material-ui/core';
+import { Typography, TextField } from '@material-ui/core';
+
+import GraphForm from '../parts/GraphForm';
 
 class Start extends Component {
+
   render() {
     const { classes } = this.props;
 
     return (
       <main className={classes.root}>
         <div className={classes.hero}>
-          <Typography variant="h1" color="secondary" className={classes.title}>
-            Start
+          <Typography variant="display3" color="secondary" className={classes.title}>
+            New Convolution Graph
           </Typography>
+          <GraphForm />
         </div>
       </main>
     );

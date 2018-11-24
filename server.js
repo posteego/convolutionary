@@ -29,7 +29,7 @@ app.use(express.json());
 // Enable server to receive requests from react app locally
 const isNotProduction = process.env.NODE_ENV !== 'production';
 if (isNotProduction) {
-  app.use('*', cors({ origin: 'http://localhost:3000' }));
+  app.use('*', cors({ origin: 'http://localhost:3001' }));
 } else {
   // serve up static assets
   app.use(express.static("client/build"));

@@ -36,10 +36,10 @@ function GuestBar(classes) {
   return (
     <AppBar position="static" color="inherit" className={classes.appBar}>
       <Toolbar>
-        <Typography variant="h6" color="inherit" noWrap
+        <Typography variant="h6" color="secondary" noWrap
           className={classes.guestTitle}>
           <Link to="/" className={classes.title}>
-            Convolutionary
+            Convolution • ary
           </Link>
         </Typography>
 
@@ -136,6 +136,11 @@ const styles = theme => ({
     flex: 1,
     textDecoration: 'none',
     fontWeight: 'bold',
+  },
+  '@media (max-width: 425px)': {
+    title: {
+      display: 'none',
+    },
   },
 });
 
