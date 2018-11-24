@@ -23,7 +23,7 @@ function Splash(props) {
         <Typography variant="h5" align="center" gutterBottom component="p" className={classes.description}>
           Visualize the mathematical convolution of two given functions.
           </Typography>
-        <Link to="/register" className={classes.start}>
+        <Link to="/start" className={classes.start}>
           <Button variant="outlined" size="large" color="secondary">
             Get Started
           </Button>

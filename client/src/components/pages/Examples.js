@@ -2,7 +2,27 @@ import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 
-class About extends Component {
+import api from '../../tools/api';
+
+class Examples extends Component {
+  state = {
+    pairs: []
+  };
+
+  componentDidMount() {
+    this.getPairs();
+  }
+
+  getPairs = () => {
+    api.getPairs()
+      .then(res =>
+        this.setState({
+          pairs: res.data
+        })
+      )
+      .catch(err => console.log(err));
+  };
+
   render() {
     const { classes } = this.props;
 
@@ -12,6 +32,13 @@ class About extends Component {
           <Typography variant="h1" color="secondary" className={classes.title}>
             Examples
           </Typography>
+        </div>
+        <div>
+          {this.state.pairs.length ? (
+            <p>There are graph examples</p>
+          ) : (
+            <p>There are no graph examples</p>
+          )}
         </div>
       </main>
     );
@@ -24,11 +51,11 @@ const styles = () => ({
     flexGrow: 1,
     flexDirection: 'column',
     marginTop: 80,
-    marginBottom: 300,
     textAlign: 'center',
   },
   hero: {
     margin: 0,
+    marginBottom: 300,
   },
   title: {
     fontFamily: "Questrial",
@@ -36,4 +63,4 @@ const styles = () => ({
   },
 });
 
-export default withStyles(styles)(About);
+export default withStyles(styles)(Examples);
