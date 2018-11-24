@@ -1,18 +1,35 @@
+// React, React Router, Material UI
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-
-import { NavBar, Footer } from './layout';
-import Splash from './pages/Splash';
-import About from './pages/About';
-import Login from './pages/Login';
-import Dash from './pages/Dash';
-import PrivateRoute from './parts/PrivateRoute';
-
 import { withStyles } from '@material-ui/core/styles';
 
-import FakeAuth from './test/FakeAuth';
+// Layout
+import {
+  NavBar,
+  Footer
+} from './layout';
 
-const Register = () => <h1>Register</h1>
+// Pages
+import {
+  Splash,
+  About,
+  Examples,
+  Start,
+  Login,
+  Dash
+} from './pages/';
+
+// Parts/Tools
+import {
+  PrivateRoute
+} from './parts';
+
+// Testing
+import {
+  FakeAuth
+} from './test';
+
+const Register = () => <h1>Register</h1>;
 
 class Main extends Component {
   render() {
@@ -24,6 +41,8 @@ class Main extends Component {
           <div className={classes.main}>
             <Route exact path="/" component={Splash} />
             <Route path="/about" component={About} />
+            <Route path="/examples" component={Examples} />
+            <Route path="/start" component={Start} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
             <PrivateRoute path="/dashboard" component={Dash} />

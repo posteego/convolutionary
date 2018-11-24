@@ -10,11 +10,25 @@ import {
 import { withStyles } from '@material-ui/core/styles';
 
 
-function AboutLink(classes) {
+function NavLinks(classes) {
   return (
-    <Button color="inherit" className={classes.about}>
-      About
-    </Button>
+    <React.Fragment>
+      <Link to="/about" className={classes.link}>
+        <Button color="inherit" className={classes.navlinks}>
+          About
+        </Button>
+      </Link>
+      <Link to="/examples" className={classes.link}>
+        <Button color="inherit" className={classes.navlinks}>
+          Examples
+        </Button>
+      </Link>
+      <Link to="/start" className={classes.link}>
+        <Button color="primary" className={classes.navlinks} variant="outlined">
+          Start
+        </Button>
+      </Link>
+    </React.Fragment>
   );
 }
 
@@ -24,16 +38,16 @@ function GuestBar(classes) {
       <Toolbar>
         <Typography variant="h6" color="inherit" noWrap
           className={classes.guestTitle}>
-          <Link to="/" className={classes.link}>
+          <Link to="/" className={classes.title}>
             Convolutionary
           </Link>
         </Typography>
-        <Link to="/about" className={classes.link}>
-          <AboutLink {...classes} />
-        </Link>
+
+        <NavLinks {...classes} />
+
         <Link to="/login" className={classes.link}>
-          <Button color="primary" variant="contained"
-            className={classes.login}>
+          <Button color="primary" variant="contained" disabled
+            className={classes.login} style={{ outline: '2px dashed #ff0', boxShadow: '0 0 0 2px #000' }}>
             Log In
           </Button>
         </Link>
@@ -57,10 +71,10 @@ function UserBar(classes) {
           </Button>
         </Link>
         <Link to="/about" className={classes.link}>
-          <AboutLink {...classes} />
+          <NavLinks {...classes} />
         </Link>
         <Button color="secondary" variant="outlined"
-          className={classes.navlink}>
+          className={classes.logout}>
           Log Out
         </Button>
       </Toolbar>
@@ -79,7 +93,7 @@ function NavBar(props) {
   return <GuestBar {...classes} />
 }
 
-const styles = {
+const styles = theme => ({
   appBar: {
     fontFamily: "Roboto",
   },
@@ -88,9 +102,15 @@ const styles = {
     margin: 0,
     fontWeight: 'bold',
   },
-  about: {
+  title: {
+    textDecoration: 'none',
+    color: 'inherit',
+    fontSize: '3vmin',
+  },
+  navlinks: {
     flex: 2,
     fontSize: 15,
+    margin: '0 2px',
   },
   login: {
     flex: 2,
@@ -103,7 +123,7 @@ const styles = {
     margin: 0,
     fontWeight: 'bold',
   },
-  navlink: {
+  logout: {
     flex: 1,
     marginLeft: 5,
   },
@@ -117,6 +137,6 @@ const styles = {
     textDecoration: 'none',
     fontWeight: 'bold',
   },
-};
+});
 
 export default withStyles(styles)(NavBar);

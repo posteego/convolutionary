@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
-import { withStyles } from '@material-ui/core/styles';
 
 import FakeAuth from '../test/FakeAuth';
 import LoginForm from '../parts/LoginForm';
@@ -17,7 +16,6 @@ class Login extends Component {
   };
 
   render() {
-    const { classes } = this.props;
     let { from } = this.props.location.state || { from: { pathname: "/" } };
     let { redirectToReferrer } = this.state;
 
@@ -25,29 +23,14 @@ class Login extends Component {
 
     if (from.pathname === '/dashboard') {
       return (
-        <div>
-          <p>You must log in to view your dashboard!</p>
-          <h1>Login</h1>
-        </div>
+        <LoginForm redirect />
       );
     }
 
     return (
-      <React.Fragment>
-        <div className={classes.center}>
-          <h1>Login</h1>
-          <LoginForm />
-        </div>
-      </React.Fragment>
+      <LoginForm />
     );
   }
 }
 
-const styles = () => ({
-  center: {
-    textAlign: 'center',
-  }
-});
-
-
-export default withStyles(styles)(Login);
+export default (Login);
