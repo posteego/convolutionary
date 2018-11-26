@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { Typography, TextField } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 
 import GraphForm from '../parts/GraphForm';
 

@@ -25,4 +25,6 @@ and create an animation that creates the convolution graph in real time, similar
 * [Algebrite](http://algebrite.org/)
 * [Nerdamer](http://nerdamer.com/)
 * [D3](https://d3js.org/)
+* [katex](https://katex.org/)
+* [react-katex](https://github.com/talyssonoc/react-katex)
 * [Function Plot](https://mauriciopoppe.github.io/function-plot/)

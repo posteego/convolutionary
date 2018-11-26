@@ -19,7 +19,6 @@
   "homepage": "https://github.com/kpostigo/convolutionary#readme",
   "dependencies": {
     "colors": "^1.3.2",
-    "cors": "^2.8.5",
     "express": "^4.16.4",
     "moment": "^2.22.2",
     "mongoose": "^5.3.13"
