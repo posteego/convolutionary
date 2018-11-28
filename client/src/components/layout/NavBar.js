@@ -24,7 +24,7 @@ function NavLinks(classes) {
         </Button>
       </Link>
       <Link to="/start" className={classes.link}>
-        <Button color="primary" className={classes.navlinks} variant="outlined">
+        <Button color="primary" className={classes.navlinks} variant="contained">
           Start
         </Button>
       </Link>
@@ -36,7 +36,7 @@ function GuestBar(classes) {
   return (
     <AppBar position="static" color="inherit" className={classes.appBar}>
       <Toolbar>
-        <Typography variant="h6" color="secondary" noWrap
+        <Typography variant="h5" color="primary" noWrap
           className={classes.guestTitle}>
           <Link to="/" className={classes.title}>
             Convolution • ary
@@ -47,7 +47,7 @@ function GuestBar(classes) {
 
         <Link to="/login" className={classes.link}>
           <Button color="primary" variant="contained" disabled
-            className={classes.login} style={{ outline: '2px dashed #ff0', boxShadow: '0 0 0 2px #000' }}>
+            className={classes.login} style={{ outline: '2px dashed #ff0', boxShadow: '0 0 0 2px #000' }} >
             Log In
           </Button>
         </Link>
@@ -70,9 +70,9 @@ function UserBar(classes) {
             Dashboard
           </Button>
         </Link>
-        <Link to="/about" className={classes.link}>
-          <NavLinks {...classes} />
-        </Link>
+
+        <NavLinks {...classes} />
+        
         <Button color="secondary" variant="outlined"
           className={classes.logout}>
           Log Out
@@ -105,7 +105,6 @@ const styles = theme => ({
   title: {
     textDecoration: 'none',
     color: 'inherit',
-    fontSize: '3vmin',
   },
   navlinks: {
     flex: 2,

@@ -13,18 +13,15 @@ function Splash(props) {
       {/* Hero unit */}
       <div>
         <Typography variant="h2" color="inherit" gutterBottom>
-          (animation example)
+          (animation)
         </Typography>
       </div>
       <div className={classes.hero}>
-        <Typography color="inherit" variant="headline" align="center" gutterBottom className={classes.slogan}>
-          a dictionary of convolutions
-          </Typography>
         <Typography color="primary" className={classes.title}>
           Convolution • ary
           </Typography>
-        <Typography color="inherit" variant="h5" align="center" gutterBottom component="p" className={classes.description}>
-          Visualize the mathematical convolution of two given functions.
+        <Typography color="secondary" variant="h5" align="center" gutterBottom className={classes.slogan}>
+          a dictionary of convolutions
           </Typography>
         <Link to="/start" className={classes.startLink}>
           <Button variant="outlined" size="large" color="primary" className={classes.startBtn}>
@@ -51,22 +48,20 @@ const styles = {
     margin: '4vw',
   },
   title: {
-    marginBottom: 25,
     fontSize: '10vmin',
+    fontWeight: 600,
   },
   slogan: {
-    marginBottom: -15,
+    marginTop: -15,
+    marginBottom: 35,
     fontFamily: "Comfortaa",
-  },
-  description: {
-    marginBottom: 30,
-    fontFamily: "Questrial",
+    fontWeight: 'bold'
   },
   startLink: {
     textDecoration: 'none',
   },
   startBtn: {
-    fontSize: 15,
+    fontSize: 18,
   }
 }
 

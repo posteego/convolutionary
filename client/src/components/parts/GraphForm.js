@@ -1,22 +1,32 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 
-import { Typography, TextField } from '@material-ui/core';
+import { Typography, Grid, TextField, Button } from '@material-ui/core';
 
 class GraphForm extends Component {
-  state = {
-    g1: '',
-    g1x1: null,
-    g1x2: null,
-    g2: '',
-    g2x1: null,
-    g2x2: null,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      function: 'sin(x)',
+      x1: '-1',
+      x2: '2',
+      function_error: null,
+      range_error: null,
+    };
+  }
 
-  handleChange = name => event => {
+  updateStates = name => event => {
     this.setState({
       [name]: event.target.value,
     });
+  };
+
+  verifyInputs = () => {
+    // function input
+    // not empty
+    // left + right bound
+    // not empty
+    // is a number
   };
 
   render() {
@@ -30,29 +40,48 @@ class GraphForm extends Component {
     };
     return (
       <div className={classes.container}>
-        <Typography variant="headline" className={classes.instruction}>
-          Enter the first function and its bounds:
+        <Typography variant="h5" className={classes.instruction}>
+          {this.props.number === 1 ?
+            'Enter the first function and its bounds:'
+            :
+            'Enter the second function and its bounds'
+          }
         </Typography>
-        <form className={classes.formContainer} noValidate autoComplete="off">
-          <TextField id="g1-input" label="Function 1" placeholder="sin(x)"
-            type="g1" value={this.state.g1}
-            onChange={this.handleChange('g1')}
-            variant="outlined" margin="normal" className={classes.functionField}
-            InputProps={inputProps}
-          />
-          <TextField id="g1x1-input" label="Left Bound" placeholder="0"
-            type="g1x1" value={this.state.g1x1}
-            onChange={this.handleChange('g1x1')}
-            variant="outlined" margin="normal" className={classes.rangeField}
-            InputProps={inputProps}
-          />
-          <TextField id="g1x2-input" label="Right Bound" placeholder="0"
-            type="g1z2" value={this.state.g1x2}
-            onChange={this.handleChange('g1x2')}
-            variant="outlined" margin="normal" className={classes.rangeField}
-            InputProps={inputProps}
-          />
-        </form>
+        <Grid container spacing={0} justify="center" alignItems="center">
+          <Grid item>
+            <TextField id="functionInput"
+              label={`Function ${this.props.number}`}
+              placeholder={this.state.function} type="function"
+              variant="outlined" margin="dense"
+              className={classes.functionField}
+              InputProps={inputProps}
+            />
+          </Grid>
+          <Grid item>
+            <TextField id="x1Input" label="Left Bound"
+              placeholder={this.state.x1} type="number"
+              variant="outlined" margin="dense"
+              className={classes.rangeField}
+              InputProps={inputProps}
+            />
+          </Grid>
+          <Grid item>
+            <TextField id="x2Input" label="Right Bound"
+              placeholder={this.state.x2} type="number"
+              variant="outlined" margin="dense"
+              className={classes.rangeField}
+              InputProps={inputProps}
+            />
+          </Grid>
+
+          <Grid item>
+            <Button variant="outlined" size="medium" color="secondary"
+              className={classes.verify}
+              onClick={this.verifyInputs}>
+              Verify
+            </Button>
+          </Grid>
+        </Grid>
       </div>
     );
   }
@@ -63,32 +92,36 @@ const styles = theme => ({
     display: 'flex',
     flexGrow: 1,
     flexDirection: 'column',
-    marginTop: 80,
-    marginBottom: 300,
+    marginTop: 50,
     textAlign: 'center',
   },
   instruction: {
     marginBottom: 50,
+    fontFamily: "Comfortaa",
   },
   functionField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
-    width: '15vw',
+    width: 300,
   },
   rangeField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
-    width: '7vw',
+    width: 142,
+  },
+  verify: {
+    fontSize: 18,
+    marginTop: 2,
   },
   cssLabel: {
     '&$cssFocused': {
-      color: "#00bcd4",
+      color: "#34a693",
     },
   },
   cssFocused: {},
   cssOutlinedInput: {
     '&$cssFocused $notchedOutline': {
-      borderColor: "#00bcd4",
+      borderColor: "#34a693",
     },
   },
   notchedOutline: {},

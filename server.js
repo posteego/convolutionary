@@ -6,7 +6,7 @@ const mongoose = require("mongoose");
 const routes = require("./routes");
 
 const HOST = process.env.HOST || 'localhost';
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 const DB_URI = process.env.MONGODB_URI || "mongodb://localhost/convolutionary";
 const SERVER_NAME = process.env.SERVER_NAME || "CONVOLUTIONARY";
 
