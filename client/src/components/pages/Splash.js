@@ -13,7 +13,7 @@ function Splash(props) {
       {/* Hero unit */}
       <div>
         <Typography variant="h2" color="inherit" gutterBottom>
-          (animation)
+          
         </Typography>
       </div>
       <div className={classes.hero}>

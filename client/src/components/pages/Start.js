@@ -6,8 +6,6 @@ import { BlockMath } from 'react-katex';
 import { GraphForm } from '../parts';
 import api from '../../tools/api';
 import algebrite from 'algebrite';
-import d3 from 'd3';
-import plot from 'function-plot';
 
 class Start extends Component {
   constructor(props) {
@@ -59,13 +57,6 @@ class Start extends Component {
       await this.verifyFunctions();
       // add graphs to the db
       await this.addToDb();
-
-      plot({
-        target: '#convolution-result',
-        data: [{
-          fn: 'x^2',
-        }],
-      });
     }
   };
 
@@ -75,6 +66,19 @@ class Start extends Component {
     let graph2 = algebrite.eval(this.state.g2.replace(/x/g, '(t-x)'));
     let toconv = algebrite.eval(`(${graph1})*(${graph2})`);
     let conv = algebrite.integral(toconv, 'x');
+    let left1 = this.state.g1x1;
+    let left2 = this.state.g2x1;
+    let left = left1 + left2;
+    let right1 = this.state.g1x2;
+    let right2 = this.state.g2x2;
+    let right = right1 + right2;
+
+    let convRight = algebrite.eval(conv.toString().replace(/t/g, right));
+    let convLeft = algebrite.eval(conv.toString().replace(/t/g, left));
+
+    conv = algebrite.eval(`${convRight}-${convLeft}`);
+    conv += '\\left[' + left + ',' + right + '\\right]';
+
     this.setState({ convolution: conv.toString() });
     console.log(conv.toString());
   };
@@ -119,8 +123,6 @@ class Start extends Component {
           <BlockMath>
             {this.state.convolution}
           </BlockMath>
-          <canvas id="convolution-result">
-          </canvas>
         </div>
       </main>
     );

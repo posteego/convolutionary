@@ -13,7 +13,7 @@ import {
 import {
   Splash,
   About,
-  Examples,
+  Past,
   Start,
   Login,
   Dash
@@ -41,7 +41,7 @@ class Main extends Component {
           <div className={classes.main}>
             <Route exact path="/" component={Splash} />
             <Route path="/about" component={About} />
-            <Route path="/examples" component={Examples} />
+            <Route path="/examples" component={Past} />
             <Route path="/start" component={Start} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />

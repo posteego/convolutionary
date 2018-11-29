@@ -5,7 +5,7 @@ import { Typography } from '@material-ui/core';
 import { Pair } from '../parts';
 import api from '../../tools/api';
 
-class Examples extends Component {
+class Past extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -34,28 +34,19 @@ class Examples extends Component {
       <main className={classes.root}>
         <div className={classes.hero}>
           <Typography variant="h1" color="secondary" className={classes.title}>
-            Examples
+            Previous Convolutions
           </Typography>
         </div>
         <div>
           {this.state.pairs.length ? (
-            <p>{this.state.books.map(book => (
+            <p>{this.state.pairs.map(pair => (
               <Pair
-                key={book.id}
-                title={book.volumeInfo.title}
-                subtitle={book.volumeInfo.subtitle}
-                link={book.volumeInfo.infoLink}
-                authors={book.volumeInfo.authors.join(", ")}
-                description={book.volumeInfo.description}
-                image={book.volumeInfo.imageLinks.thumbnail}
-                Button={() => (
-                  <button
-                    onClick={() => this.handleBookSave(book.id)}
-                    className="btn btn-primary ml-2"
-                  >
-                    Save
-                        </button>
-                )}
+                g1={pair.g1}
+                g1x1={pair.g1x1}
+                g1x2={pair.g1x2}
+                g2={pair.g2}
+                g2x1={pair.g2x1}
+                g2x2={pair.g2x2}
               />
             ))}
 </p>
@@ -78,12 +69,12 @@ const styles = () => ({
   },
   hero: {
     margin: 0,
-    marginBottom: 300,
   },
   title: {
     fontFamily: "Questrial",
     fontWeight: 'bold',
+    marginBottom: 40,
   },
 });
 
-export default withStyles(styles)(Examples);
+export default withStyles(styles)(Past);

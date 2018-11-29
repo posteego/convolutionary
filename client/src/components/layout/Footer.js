@@ -8,7 +8,7 @@ const styles = {
     bottom: 0,
     paddingTop: 5,
     margin: 0,
-    marginTop: 45,
+    marginTop: 40,
   },
   link: {
     textDecoration: 'none',

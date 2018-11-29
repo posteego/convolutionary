@@ -9,7 +9,7 @@ class About extends Component {
     return (
       <main className={classes.root}>
         <div className={classes.hero}>
-          <Typography variant="h1" color="secondary" className={classes.title}>
+          <Typography variant="h1" color="primary" className={classes.title}>
             About
           </Typography>
         </div>
