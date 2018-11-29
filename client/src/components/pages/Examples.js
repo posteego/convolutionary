@@ -2,12 +2,16 @@ import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 
+import { Pair } from '../parts';
 import api from '../../tools/api';
 
 class Examples extends Component {
-  state = {
-    pairs: []
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      pairs: [],
+    };
+  }
 
   componentDidMount() {
     this.getPairs();
@@ -17,7 +21,7 @@ class Examples extends Component {
     api.getPairs()
       .then(res =>
         this.setState({
-          pairs: res.data
+          pairs: res.data,
         })
       )
       .catch(err => console.log(err));
@@ -35,7 +39,26 @@ class Examples extends Component {
         </div>
         <div>
           {this.state.pairs.length ? (
-            <p>There are graph examples</p>
+            <p>{this.state.books.map(book => (
+              <Pair
+                key={book.id}
+                title={book.volumeInfo.title}
+                subtitle={book.volumeInfo.subtitle}
+                link={book.volumeInfo.infoLink}
+                authors={book.volumeInfo.authors.join(", ")}
+                description={book.volumeInfo.description}
+                image={book.volumeInfo.imageLinks.thumbnail}
+                Button={() => (
+                  <button
+                    onClick={() => this.handleBookSave(book.id)}
+                    className="btn btn-primary ml-2"
+                  >
+                    Save
+                        </button>
+                )}
+              />
+            ))}
+</p>
           ) : (
             <p>There are no graph examples</p>
           )}

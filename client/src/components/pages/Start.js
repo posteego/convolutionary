@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { Typography, Button } from '@material-ui/core';
+import { BlockMath } from 'react-katex';
 
-import GraphForm from '../parts/GraphForm';
+import { GraphForm } from '../parts';
+import api from '../../tools/api';
 import algebrite from 'algebrite';
+import d3 from 'd3';
+import plot from 'function-plot';
 
 class Start extends Component {
   constructor(props) {
@@ -54,6 +58,14 @@ class Start extends Component {
       // use await in case integral not found
       await this.verifyFunctions();
       // add graphs to the db
+      await this.addToDb();
+
+      plot({
+        target: '#convolution-result',
+        data: [{
+          fn: 'x^2',
+        }],
+      });
     }
   };
 
@@ -65,7 +77,23 @@ class Start extends Component {
     let conv = algebrite.integral(toconv, 'x');
     this.setState({ convolution: conv.toString() });
     console.log(conv.toString());
-  }
+  };
+
+  addToDb = () => {
+    let data = {
+      g1: this.state.g1,
+      g1x1: this.state.g1x1,
+      g1x2: this.state.g1x2,
+      g2: this.state.g2,
+      g2x1: this.state.g2x1,
+      g2x2: this.state.g2x2,
+    };
+    
+    console.log(data);
+
+    api.savePair(data)
+      .catch(err => console.log(err));
+  };
 
   render() {
     const { classes } = this.props;
@@ -86,6 +114,13 @@ class Start extends Component {
             onClick={this.verifyInput}>
             Convolute!
           </Button>
+        </div>
+        <div className={classes.convolution}>
+          <BlockMath>
+            {this.state.convolution}
+          </BlockMath>
+          <canvas id="convolution-result">
+          </canvas>
         </div>
       </main>
     );
@@ -113,6 +148,9 @@ const styles = theme => ({
   hero: {
     margin: 0,
   },
+  convolution: {
+    marginTop: 40,
+  }
 });
 
 export default withStyles(styles)(Start);
