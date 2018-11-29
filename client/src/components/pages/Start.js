@@ -1,30 +1,91 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import { Typography } from '@material-ui/core';
+import { Typography, Button } from '@material-ui/core';
 
 import GraphForm from '../parts/GraphForm';
+import algebrite from 'algebrite';
 
 class Start extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      g1: '',
+      g1x1: '0',
+      g1x2: '0',
+      g2: '',
+      g2x1: '0',
+      g2x2: '0',
+      convolution: '',
+      clear1: false,
+      clear2: false,
+      error_message: null,
+    };
+    this.updateState = this.updateState;
+  }
 
-  state = {
-    g1: '',
-    g1x1: 0,
-    g1x2: 0,
-    g2: '',
-    g2x1: 0,
-    g2x2: 0
+  updateState = async (first, data) => {
+    let g, gx1, gx2;
+
+    if (first) {
+      g = 'g1';
+      gx1 = 'g1x1';
+      gx2 = 'g1x2';
+      await this.setState({ clear1: true });
+    } else {
+      g = 'g2';
+      gx1 = 'g2x1';
+      gx2 = 'g2x2';
+      await this.setState({ clear2: true });
+    }
+
+    await this.setState({
+      [g]: data.function,
+      [gx1]: data.x1,
+      [gx2]: data.x2
+    });
   };
+
+  verifyInput = async () => {
+    await this.setState({ error_message: null });
+
+    if (!(this.state.clear1 && this.state.clear2)) {
+      await this.setState({ error_message: 'Please fill out the form correctly!' });
+    } else {
+      // use await in case integral not found
+      await this.verifyFunctions();
+      // add graphs to the db
+    }
+  };
+
+  verifyFunctions = () => {
+    // see if convolution exists
+    let graph1 = algebrite.eval(this.state.g1);
+    let graph2 = algebrite.eval(this.state.g2.replace(/x/g, '(t-x)'));
+    let toconv = algebrite.eval(`(${graph1})*(${graph2})`);
+    let conv = algebrite.integral(toconv, 'x');
+    this.setState({ convolution: conv.toString() });
+    console.log(conv.toString());
+  }
 
   render() {
     const { classes } = this.props;
 
     return (
       <main className={classes.root}>
-        <Typography variant="h1" color="secondary" className={classes.title}>
+        <Typography variant="h1" color="primary" className={classes.title}>
           New Convolution
-          </Typography>
+        </Typography>
+        <Typography variant="h6" color="secondary" className={classes.error}>
+          {this.state.error_message}
+        </Typography>
         <div className={classes.hero}>
-          <GraphForm number={1} />
+          <GraphForm first={true} updateData={this.updateState} />
+          <GraphForm first={false} updateData={this.updateState} />
+          <Button variant="contained" size="large" color="primary"
+            className={classes.next}
+            onClick={this.verifyInput}>
+            Convolute!
+          </Button>
         </div>
       </main>
     );
@@ -40,12 +101,17 @@ const styles = theme => ({
     marginBottom: 50,
     textAlign: 'center',
   },
-  hero: {
-    margin: 0,
-  },
   title: {
     fontFamily: "Questrial",
     fontWeight: 'bold',
+    marginBottom: 30,
+  },
+  error: {
+    marginBottom: 20,
+    fontWeight: 'bold',
+  },
+  hero: {
+    margin: 0,
   },
 });
 

@@ -3,6 +3,8 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 import Main from './components/Main';
 
+import 'katex/dist/katex.min.css';
+
 const theme = createMuiTheme({
   palette: {
     primary: {

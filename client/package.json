@@ -5,9 +5,11 @@
   "proxy": "http://localhost:3001/",
   "dependencies": {
     "@material-ui/core": "^3.4.0",
+    "algebrite": "^1.2.0",
     "axios": "^0.18.0",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
+    "react-katex": "^2.0.2",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.0"
