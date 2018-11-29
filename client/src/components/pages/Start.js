@@ -77,7 +77,7 @@ class Start extends Component {
     let convLeft = algebrite.eval(conv.toString().replace(/t/g, left));
 
     conv = algebrite.eval(`${convRight}-${convLeft}`);
-    conv += '\\left[' + left + ',' + right + '\\right]';
+    conv += ' \\left[' + left + ',' + right + '\\right]';
 
     this.setState({ convolution: conv.toString() });
     console.log(conv.toString());
