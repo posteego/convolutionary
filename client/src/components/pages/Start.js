@@ -63,7 +63,7 @@ class Start extends Component {
   verifyFunctions = () => {
     // see if convolution exists
     let graph1 = algebrite.eval(this.state.g1);
-    let graph2 = algebrite.eval(this.state.g2.replace(/x/g, '(t-x)'));
+    let graph2 = algebrite.eval(this.state.g2.replace(/x/g, 't-x'));
     let toconv = algebrite.eval(`(${graph1})*(${graph2})`);
     let conv = algebrite.integral(toconv, 'x');
     let left1 = this.state.g1x1;
