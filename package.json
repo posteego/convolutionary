@@ -2,6 +2,9 @@
   "name": "convolutionary",
   "version": "1.0.0",
   "description": "Convolutionary is a website that helps people visualize convolution.",
+  "engines": {
+    "node": "12.x"
+  },
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
