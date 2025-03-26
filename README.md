@@ -1,5 +1,7 @@
 # Convolutionary
 
+**This repo is currently archived. It was part of Columbia University's Full-Stack Web Development Bootcamp.**
+
 Convolutionary is a website that helps people visualize convolution.
 
 ## Inspiration
